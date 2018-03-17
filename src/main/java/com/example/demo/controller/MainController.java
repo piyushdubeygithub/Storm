@@ -11,16 +11,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
+import com.example.demo.utility.URLMapping;
 
 
 @RestController
 public class MainController {
+	
 	@Autowired
 	UserService userService;
-     @RequestMapping(value="/register/user",method=RequestMethod.POST)
+     @RequestMapping(value=URLMapping.REGISTER_USER,method=RequestMethod.POST)
 	public Map<String,Object> registerUser(@RequestBody User user) {
 		Map<String,Object> result = new HashMap<String, Object>();
 		  result = userService.saveUser(user);
 		return result;
 	}
+     
+     @RequestMapping(value=URLMapping.UPDATE_USER,method=RequestMethod.PUT)
+ 	public Map<String,Object> updateUser(@RequestBody User user) {
+ 		Map<String,Object> result = new HashMap<String, Object>();
+ 		  result = userService.updateUser(user);
+ 		return result;
+ 	}
+     
+     @RequestMapping(value=URLMapping.LOGIN_USER,method=RequestMethod.POST)
+     public Map<String,Object> loginUser(@RequestBody Map<String,Object> loginForm) {
+    	 Map<String,Object> result = new HashMap<String,Object>();
+    	 result = userService.loginUser(loginForm);
+    	 return result;
+     }
+     
 }
