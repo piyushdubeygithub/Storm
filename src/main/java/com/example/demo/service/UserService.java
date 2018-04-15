@@ -92,4 +92,12 @@ public class UserService {
 		}
 		return userExists;
 	}
+
+	public Map<String, Object> searchDS(String keyword, String type) {
+		Map<String,Object> result = new HashMap<>();
+		if(type.equals("state")) {
+			result.put("result", userRepository.findAll());
+		}
+		return result;
+	}
 }
