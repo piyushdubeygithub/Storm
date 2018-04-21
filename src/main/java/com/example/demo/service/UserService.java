@@ -8,12 +8,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.domain.User;
+import com.example.demo.repository.DrivingSchoolRepository;
 import com.example.demo.repository.UserRepository;
 
 @Service
 public class UserService {
     @Autowired
 	UserRepository userRepository;
+    
+    @Autowired
+	DrivingSchoolRepository dsRepository;
     
     public Map<String,Object> saveUser(User user){
     	Map<String,Object> result = new HashMap<String, Object>();
@@ -96,7 +100,7 @@ public class UserService {
 	public Map<String, Object> searchDS(String keyword, String type) {
 		Map<String,Object> result = new HashMap<>();
 		if(type.equals("state")) {
-			result.put("result", userRepository.findAll());
+			result.put("result", dsRepository.findByLocality("sector 3"));
 		}
 		return result;
 	}

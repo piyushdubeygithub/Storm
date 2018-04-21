@@ -15,5 +15,5 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
 	 public List<User> findByPhoneOrEmailId( String lastname, String firstname);
 	 
 	 @Query("SELECT u from User u where status = 'Active'")
-	 public List<User> find(@Param ("status") String status);
+	 public List<User> find();
 }
