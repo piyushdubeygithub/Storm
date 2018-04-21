@@ -99,8 +99,8 @@ public class UserService {
 
 	public Map<String, Object> searchDS(String keyword, String type) {
 		Map<String,Object> result = new HashMap<>();
-		if(type.equals("state")) {
-			result.put("result", dsRepository.findByLocality("sector 3"));
+		if(type.equals("locality")) {
+			result.put("result", dsRepository.findByLocality(keyword));
 		}
 		return result;
 	}
