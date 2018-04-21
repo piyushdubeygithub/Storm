@@ -101,6 +101,8 @@ public class UserService {
 		Map<String,Object> result = new HashMap<>();
 		if(type.equals("locality")) {
 			result.put("result", dsRepository.findByLocality(keyword));
+		}else {
+			result.put("result", dsRepository.findByCity(keyword));
 		}
 		return result;
 	}
